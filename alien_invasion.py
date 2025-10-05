@@ -12,6 +12,7 @@ class AlienInvasion:
         # set the display window to the attribue 'self.screen', so it will be available in all methods in the class
         pygame.init()
         
+        self.clocl = pygame.time.Clock()
         self.screen = pygame.display.set_mode((1200, 800))
         pygame.display.set_caption("Alien Invasion")
 
@@ -26,6 +27,7 @@ class AlienInvasion:
 
             # flip() is the display to put your work on screen(makes the most recently drawn screen visible).
             pygame.display.flip()
+            self.clock.tick(60)
 # checks wheter the file is being run directly.Also prevents some code from running when importing this file as a module
 #  (so basically you need to call the function directly for it to run)
 if __name__ == '__main__':
