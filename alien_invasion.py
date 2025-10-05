@@ -12,7 +12,7 @@ class AlienInvasion:
         # set the display window to the attribue 'self.screen', so it will be available in all methods in the class
         pygame.init()
         
-        self.clocl = pygame.time.Clock()
+        self.clock = pygame.time.Clock()
         self.screen = pygame.display.set_mode((1200, 800))
         pygame.display.set_caption("Alien Invasion")
 
