@@ -21,6 +21,9 @@ class Ship:
         self.rect.midbottom = self.screen_rect.midbottom
 
         # Store a float for the sihp's exact horizontal position.
+        # self.rect.x is the current integer position of the ship's rectangle
+        # self.x is the floating-point (precise) horizontal position
+        # this way fractioanl speeds (like 1.5) aren't lost when updating rect
         self.x = float(self.rect.x)
 
         # Movement flag; start with a ship that's not moving.
@@ -31,7 +34,6 @@ class Ship:
         """Update the ship's position based on the movement flag."""
         # Update the ship's x value, not the rect.
         if self.moving_right:
-            # Move the ship to the right.
             self.x += self.settings.ship_speed
         if self.moving_left:
             self.x -= self.settings.ship_speed
