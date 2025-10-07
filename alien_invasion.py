@@ -30,15 +30,31 @@ class AlienInvasion:
             # calls the methods _check_events() into the loop
             # to call this methods from within the class, I used dot notation with the variable self and name of the methods
             self._check_events()
+            self.ship.update()
             self._update_screen()
             self.clock.tick(60)
 
     def _check_events(self):
         """Respond to keypresses and mouse events."""
         # the event 'pygame.QUIT' is the x at the top right of screen
+        # each event (keypress) is picked up by the pygame.event.get() method
+        # each keypress is registered as a KEYDOWN event. 
+        # when Pygame detects a KEYDOWN event, I need to check whether the key that was pressed triggers an action.
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    self.ship.moving_right = True
+                elif event.key == pygame.K_LEFT:
+                    self.ship.moving_left = True
+
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_RIGHT:
+                    self.ship.moving_right = False
+                if event.key == pygame.K_LEFT:
+                    self.ship.moving_left = False
+
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
         #redraw the screen during eacch pass through the loop.
